@@ -31,7 +31,21 @@ function reactor_do_overline() {
         </header><!-- .archive-header -->
 	<?php }
 }
-add_action('reactor_post_before', 'reactor_do_overline', 1);
+//add_action('reactor_post_before', 'reactor_do_overline', 2);
+
+/**
+ * Post header meta
+ * in all formats
+ * 
+ * @since 1.0.0
+ */
+function reactor_do_post_header_meta() {
+
+	if ( is_front_page() ) {
+		reactor_post_meta( array( 'date_only'=>true ) );
+	}
+}
+add_action( 'reactor_post_before', 'reactor_do_post_header_meta', 1 );
 
 /**
  * Front page main format
@@ -53,7 +67,11 @@ function reactor_post_frontpage_format() {
 	if ( has_post_thumbnail() ) {
 		$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');
 	}
-	if (isset($large_image_url) && strlen($large_image_url[0]) >= 1) { ?>
+	$vidembed = get_post_meta( get_the_ID(), 'video_ID', true );   	
+	if ( $vidembed ) {
+		?> <div class="frontpage-post"> <?php
+		create_video_embed( $vidembed );
+	} else if ( isset( $large_image_url ) && strlen( $large_image_url[0] ) >= 1 ) { ?>
 		<div class="frontpage-image frontpage-post" style="background-image:url('<?php echo $large_image_url[0]; ?>');">
 			<div class="front-thumbnail">
 				<div class="front-imgholder"></div>
@@ -82,7 +100,7 @@ function reactor_post_catpage_format() {
 	if ( has_post_thumbnail() ) {
 		$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');
 	} ?>
-	<?php if (isset($large_image_url) && strlen($large_image_url[0]) >= 1) { ?>
+	<?php if ( isset( $large_image_url ) && strlen( $large_image_url[0]) >= 1 ) { ?>
 	<div class="catpage-post has-image">
 		<div class="catpage-image" style="background-image:url('<?php echo $large_image_url[0]; ?>');">
 			<div class="catimgspace"></div>
@@ -102,7 +120,7 @@ function reactor_post_catpage_format() {
 		<div class="clear"></div>
 	</div>
 <?php }
-add_action('reactor_post_catpage', 'reactor_post_catpage_format', 1);
+//add_action('reactor_post_catpage', 'reactor_post_catpage_format', 1);
 
 
 /**
@@ -133,21 +151,6 @@ function reactor_do_standard_header_titles() {
 <?php }
 }
 add_action('reactor_post_header', 'reactor_do_standard_header_titles', 3);
-
-
-/**
- * Post footer meta
- * in all formats
- * 
- * @since 1.0.0
- */
-function reactor_do_post_header_meta() {
-
-	if ( is_single() ) {
-		reactor_post_meta(array('show_cat'=>false,'show_tag'=>false,'comments'=>true,'catpage'=>true,'link_date'=>false,'social_dropdown'=>true));
-	}
-}
-add_action('reactor_post_header', 'reactor_do_post_header_meta', 4);
 
 /**
  * Post thumbnail
@@ -262,7 +265,7 @@ function reactor_do_post_body_social() {
 	$social_string .= '<div class="clear"></div></ul></div>';
 	echo $social_string;
 }
-add_action('reactor_post_footer', 'reactor_do_post_body_social', 2);
+//add_action('reactor_post_footer', 'reactor_do_post_body_social', 2);
 
 /**
  * Post footer meta
@@ -289,7 +292,7 @@ function reactor_do_post_footer_meta() {
 		}
 	}
 }
-add_action('reactor_post_footer', 'reactor_do_post_footer_meta', 3);
+//add_action('reactor_post_footer', 'reactor_do_post_footer_meta', 3);
 
 /**
  * Single post nav 

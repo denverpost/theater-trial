@@ -289,3 +289,18 @@ function custom_infinite_scroll_js() {
     }
 }
 add_action( 'wp_footer', 'custom_infinite_scroll_js',100 );
+
+function create_video_embed( $video_ID ){
+    ?>
+    <div class="vid-embed-wrap" id="videoEmbed">
+      <div class="vid-height-space"></div>
+        <div class="vid-embed video_<?php echo get_the_ID(); ?>" id="fce2cf476df14253a15351f1727031b4" onclick="OO.Player.create('fce2cf476df14253a15351f1727031b4', '<?php echo $video_ID; ?>', {'autoplay':true});"></div>
+        <script src='//player.ooyala.com/v3/fce2cf476df14253a15351f1727031b4'></script>
+      <style>
+         .video_<?php echo get_the_ID(); ?> { background-image:url('<?php echo wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ); ?>') }
+      </style>
+        <div class="clear"></div>
+      <img class=" <?php reactor_columns( array(3, 3, 3) ); ?> play_icon" src="<?php echo get_stylesheet_directory_uri() ?>/images/icon-pressplay.png" />
+    </div>
+   <?php
+}

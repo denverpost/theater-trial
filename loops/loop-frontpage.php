@@ -39,16 +39,25 @@ $page_links = reactor_option('frontpage_page_links', 0); ?>
                         
                         <?php while ( $frontpage_query->have_posts() ) : $frontpage_query->the_post(); global $more; $more = 0; $i++; ?>
                         	
-                            <?php reactor_post_before(); ?>
+                            <div class="row">
+                            	<div class="large-3 medium-4 small-12 columns">
+	                            	<?php reactor_post_before(); ?>
+	                            </div>
                                 
-                                <?php // display frontpage post format
-								get_template_part('post-formats/format', 'frontpage'); 
+                                <div class="large-9 medium-8 small-12 columns">
+	                                <?php // get post format and display template for that format
+						            	get_template_part('post-formats/format', 'frontpage'); ?>
+								</div>
+							</div>
 
-								if ( $i % 5 == 0 ) {
-									rvrb_infinite_ad_widget($post->ID);
-								} ?>
-                            
-                            <?php reactor_post_after(); ?>
+							<?php // try to insert an ad
+							if ( $i % 5 == 0 ) { ?>
+								<div class="row">
+	                            	<div class="large-12 medium-12 small-12 text-center columns">
+	                            	<?php dp_infinite_ad_widget($post->ID); ?>
+									</div>
+								</div>
+							<?php } ?>
 
                         <?php endwhile; // end of the loop ?>
 
