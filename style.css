@@ -15,11 +15,34 @@ div.clear {
     display:block;
     clear:both;
 }
+div.inner-header {
+    display:none;
+}
+#menu .section-container.horizontal-nav .section,
+#mobile-menu .section-container.accordion .section {
+    position:none;
+}
+.main-nav {
+    position: absolute;
+    top:1em;
+    left:1em;
+}
+.main-nav p {
+    margin-bottom:.3em;
+}
+#frontpagemain {
+    padding-top:1em;
+}
 div.entry-meta-date,
 time.entry-date {
     display:block;
     width:100%;
     color:#f5f5f5;
+    font-family: 'Raleway',Arial,Helvetica,sans-serif;
+    font-weight:700;
+    font-size:1.1em;
+    line-height:1.2;
+    padding:.25em 0;
 }
 time.entry-date .entry-date-date,
 time.entry-date .entry-date-time {
@@ -31,6 +54,11 @@ time.entry-date .entry-date-time {
     font-size: 1.1em;
     font-weight: 700
 }
+/* top-bar stuff */
+.top-bar .name p a {
+    width:100%;
+}
+/* date/time colors */
 div.entry-meta-date.format-quote {
     background-color: rgba(91,120,90,1.0);
 }
@@ -104,11 +132,21 @@ h2.entry-title {
     pointer-events:none;
 }
 @media screen and (max-width:768px) {
+    div.entry-meta-date,
+    time.entry-date {
+        padding:.1em .25em .15em 0;
+        margin-bottom:.5em;
+    }
+    div.entry-meta-date.format-video,
+    div.entry-meta-date.format-photo,
+    time.entry-date.format-photo,
+    time.entry-date.format-photo {
+        margin-bottom:0;
+    }
     time.entry-date .entry-date-date,
     time.entry-date .entry-date-time {
         float:right;
         display:inline-block;
         width:auto;
         clear:none;
-        margin-bottom:.5em;
 }
