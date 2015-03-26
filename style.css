@@ -32,16 +32,34 @@ time.entry-date .entry-date-time {
     font-weight: 700
 }
 div.entry-meta-date.format-quote {
-    background-color: #58974b;
+    background-color: rgba(91,120,90,1.0);
 }
 div.entry-meta-date.format-video {
-    background-color: #d54958;
+    background-color: rgba(207,104,89,1.0);
 }
 div.entry-meta-date.format-standard {
-    background-color: #cfa600;
+    background-color: rgba(154,108,84,1.0);
 }
 div.entry-meta-date.format-aside {
-    background-color: #9f8274;
+    background-color: rgba(86,106,130,1.0);
+}
+div.entry-meta-date.format-image {
+    background-color: rgba(211,164,43,1.0);
+}
+div.entry-meta-date.format-status {
+    background-color: rgba(125,189,203,1.0);
+}
+div.entry-meta-date.format-gallery {
+    background-color: rgba(159,188,166,1.0);
+}
+div.entry-meta-date.format-link {
+    background-color: rgba(198,83,26,1.0);
+}
+div.entry-meta-date.format-audio {
+    background-color: rgba(96,85,43,1.0);
+}
+div.entry-meta-date.format-chat {
+    background-color: rgba(197,188,156,1.0);
 }
 h2.entry-title {
     margin-top:0;
