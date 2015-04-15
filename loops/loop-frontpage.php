@@ -40,11 +40,11 @@ $page_links = reactor_option('frontpage_page_links', 0); ?>
                         <?php while ( $frontpage_query->have_posts() ) : $frontpage_query->the_post(); global $more; $more = 0; $i++; ?>
                         	
                             <div class="row">
-                            	<div class="large-3 medium-4 small-12 columns">
+                            	<div class="large-3 medium-12 small-12 columns">
 	                            	<?php reactor_post_before(); ?>
 	                            </div>
                                 
-                                <div class="large-9 medium-8 small-12 columns">
+                                <div class="large-9 medium-12 small-12 columns">
 	                                <?php // get post format and display template for that format
 						            	get_template_part('post-formats/format', 'frontpage'); ?>
 								</div>

@@ -22,14 +22,14 @@ div.inner-header {
 #mobile-menu .section-container.accordion .section {
     position:none;
 }
-.main-nav {
+/* .main-nav {
     position: absolute;
     top:1em;
     left:1em;
 }
 .main-nav p {
     margin-bottom:.3em;
-}
+} */
 #frontpagemain {
     padding-top:1em;
 }
@@ -37,7 +37,7 @@ div.entry-meta-date,
 time.entry-date {
     display:block;
     width:100%;
-    color:#f5f5f5;
+    color:#fff;
     font-family: 'Raleway',Arial,Helvetica,sans-serif;
     font-weight:700;
     font-size:1.1em;
@@ -100,6 +100,25 @@ h2.entry-title {
     display: block;
     overflow: hidden;
 }
+.format-quote .entry-body header.entry-header {
+    display:none;
+}
+.format-quote .entry-body blockquote {
+    border:none;
+}
+.format-quote .entry-body blockquote:after {
+    content:'\201d';
+    color:rgba(0,0,0,0.1);
+    position:absolute;
+    font-size:40em;
+    line-height: .85;
+    right:0;
+    top:0;
+}
+.format-quote .entry-body blockquote p {
+    color:#4f4f4f;
+    font-size:1.6em;
+}
 .entry-body.entry-featured .entry-content {
     width: 100%;
     float:none;
@@ -131,7 +150,7 @@ h2.entry-title {
     bottom: 5%;
     pointer-events:none;
 }
-@media screen and (max-width:768px) {
+@media screen and (max-width:1024px) {
     div.entry-meta-date,
     time.entry-date {
         padding:.1em .25em .15em 0;
