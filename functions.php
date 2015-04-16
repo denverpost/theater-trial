@@ -290,6 +290,9 @@ function custom_infinite_scroll_js() {
 }
 add_action( 'wp_footer', 'custom_infinite_scroll_js',100 );
 
+/**
+ * Video embeds
+**/
 function create_video_embed( $video_ID ){
     ?>
     <div class="vid-embed-wrap" id="videoEmbed">
@@ -304,3 +307,72 @@ function create_video_embed( $video_ID ){
     </div>
    <?php
 }
+
+/**
+ * Completely disable all comments and pingbacks
+ */
+
+// Disable support for comments and trackbacks in post types
+function tt_disable_comments_post_types_support() {
+    $post_types = get_post_types();
+    foreach ($post_types as $post_type) {
+        if(post_type_supports($post_type, 'comments')) {
+            remove_post_type_support($post_type, 'comments');
+            remove_post_type_support($post_type, 'trackbacks');
+        }
+    }
+}
+add_action('admin_init', 'tt_disable_comments_post_types_support');
+
+// Close comments on the front-end
+function tt_disable_comments_status() {
+    return false;
+}
+add_filter('comments_open', 'tt_disable_comments_status', 20, 2);
+add_filter('pings_open', 'tt_disable_comments_status', 20, 2);
+
+// Hide existing comments
+function tt_disable_comments_hide_existing_comments($comments) {
+    $comments = array();
+    return $comments;
+}
+add_filter('comments_array', 'tt_disable_comments_hide_existing_comments', 10, 2);
+
+// Remove comments page in menu
+function tt_disable_comments_admin_menu() {
+    remove_menu_page('edit-comments.php');
+}
+add_action('admin_menu', 'tt_disable_comments_admin_menu');
+
+// Redirect any user trying to access comments page
+function tt_disable_comments_admin_menu_redirect() {
+    global $pagenow;
+    if ($pagenow === 'edit-comments.php') {
+        wp_redirect(admin_url()); exit;
+    }
+}
+add_action('admin_init', 'tt_disable_comments_admin_menu_redirect');
+
+// Remove comments metabox from dashboard
+function tt_disable_comments_dashboard() {
+    remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
+}
+add_action('admin_init', 'tt_disable_comments_dashboard');
+
+// Remove comments links from admin bar
+function tt_disable_comments_admin_bar() {
+    if (is_admin_bar_showing()) {
+        remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
+    }
+}
+add_action('init', 'tt_disable_comments_admin_bar');
+
+/**
+ * Remove image links
+ */
+function remove_media_link( $form_fields, $post ) {
+    unset( $form_fields['url'] );
+    return $form_fields;
+}
+add_filter( 'attachment_fields_to_edit', 'remove_media_link', 10, 2 );
+update_option('image_default_link_type','none');

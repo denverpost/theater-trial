@@ -22,6 +22,17 @@ div.inner-header {
 #mobile-menu .section-container.accordion .section {
     position:none;
 }
+body p, body li {
+    font-size: 1.25em;
+}
+body a {
+    color:#7094d9;
+}
+body a:hover,
+body a:active,
+body a:visited {
+    color:#306489;
+}
 /* .main-nav {
     position: absolute;
     top:1em;
@@ -54,9 +65,32 @@ time.entry-date .entry-date-time {
     font-size: 1.1em;
     font-weight: 700
 }
+/* overrides */
+.post.format-audio p,
+.post.format-gallery p,
+.post.format-image p,
+.post.format-link p,
+.post.format-video p {
+    line-height:1.3;
+}
+
 /* top-bar stuff */
+.top-bar .title-area {
+    width:50%;
+}
+.top-bar .name {
+    font-size:20px;
+}
 .top-bar .name p a {
     width:100%;
+}
+.top-bar .name a img {
+    height:28px;
+    margin:8px 15px 8px 10px;
+    float:left;
+}
+.top-bar-section ul li>a {
+    font-size:18px;
 }
 /* date/time colors */
 div.entry-meta-date.format-quote {
@@ -89,16 +123,73 @@ div.entry-meta-date.format-audio {
 div.entry-meta-date.format-chat {
     background-color: rgba(197,188,156,1.0);
 }
-h2.entry-title {
-    margin-top:0;
-    line-height:1.2;
-    font-weight:700;
+div.entry-meta-date time {
+    display:relative;
 }
-.vid-embed-wrap {
-    width: 100%;
-    position: relative;
-    display: block;
-    overflow: hidden;
+div.entry-meta-date time:before {
+    position: absolute;
+    left:.75em;
+    top:.25em;
+    font: 400 1.5em/1 dashicons;
+    color:rgba(255,255,255,0.9);
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* date/time icons */
+div.entry-meta-date.format-quote time:before {
+    content:'\f122';
+}
+div.entry-meta-date.format-video time:before {
+    content:'\f126';
+}
+div.entry-meta-date.format-standard time:before {
+    content:'\f123';
+}
+div.entry-meta-date.format-aside time:before {
+    content:'\f123';
+}
+div.entry-meta-date.format-image time:before {
+    content:'\f128';
+}
+div.entry-meta-date.format-status time:before {
+    content:'\f123';
+}
+div.entry-meta-date.format-gallery time:before {
+    content:'\f161';
+}
+div.entry-meta-date.format-link time:before {
+    content:'\f103';
+}
+div.entry-meta-date.format-audio time:before {
+    content:'\f521';
+}
+div.entry-meta-date.format-chat time:before {
+    content:'\f125';
+}
+
+/* the rest */
+body.home #content {
+    margin-top:2.5em;
+}
+body.home article .entry-body {
+    margin-bottom:4.5em;
+    padding-bottom:4.5em;
+}
+body.home article .entry-body h2.entry-title {
+    margin-top:0;
+    font-size:2em;
+    line-height:1.2;
+    font-weight:900;
+}
+body.home .inline-cube-ad {
+    margin-bottom:4.5em;
+}
+.wp-caption img {
+    margin-bottom:.75em;
+}
+.wp-caption-text {
+    color:#5f5f5f;
 }
 .format-quote .entry-body header.entry-header {
     display:none;
@@ -125,6 +216,13 @@ h2.entry-title {
     display:block;
     margin:.7em 0;
 }
+.vid-embed-wrap {
+    width: 100%;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin-bottom:.75em;
+}
 .vid-height-space {
     width: 100%;
     height: 0;
@@ -144,17 +242,30 @@ h2.entry-title {
     display: block;
 }
 .play_icon {
-    width: 12%;
+    width: 22%;
     position: absolute;
-    right: 5%;
+    left: 5%;
     bottom: 5%;
     pointer-events:none;
+    opacity:0.8;
+}
+.vid-embed-wrap:hover .play_icon {
+    opacity:0.925;
 }
 @media screen and (max-width:1024px) {
+    body.home article .entry-body {
+        margin-bottom:3.5em;
+        padding-bottom:3.5em;
+    }
     div.entry-meta-date,
     time.entry-date {
         padding:.1em .25em .15em 0;
         margin-bottom:.5em;
+    }
+    div.entry-meta-date time:before {
+        left:.8em;
+        top:.15em;
+        font: 400 1.25em/1 dashicons;
     }
     div.entry-meta-date.format-video,
     div.entry-meta-date.format-photo,
@@ -168,4 +279,14 @@ h2.entry-title {
         display:inline-block;
         width:auto;
         clear:none;
+    }
+}
+@media screen and (max-width:670px) {
+    body.home article .entry-body {
+        margin-bottom:2.5em;
+        padding-bottom:2.5em;
+    }
+    body.home article .entry-body h2.entry-title {
+        font-size:1.6em;
+    }
 }

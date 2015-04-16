@@ -69,22 +69,20 @@ function reactor_post_frontpage_format() {
 	}
 	$vidembed = get_post_meta( get_the_ID(), 'video_ID', true );   	
 	if ( $vidembed ) {
-		?> <div class="frontpage-post"> <?php
-		create_video_embed( $vidembed );
+		?> <div class="frontpage-post"> 
+			<h2 class="entry-title"><?php the_title(); ?></h2>
+			<?php create_video_embed( $vidembed );
 	} else if ( isset( $large_image_url ) && strlen( $large_image_url[0] ) >= 1 ) { ?>
 		<div class="frontpage-image frontpage-post" style="background-image:url('<?php echo $large_image_url[0]; ?>');">
+			<h2 class="entry-title"><?php the_title(); ?></h2>
 			<div class="front-thumbnail">
 				<div class="front-imgholder"></div>
-				<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
-					<div class="front-img" style="background-image:url('<?php echo $large_image_url[0]; ?>');"></div>
-				</a>
+				<div class="front-img" style="background-image:url('<?php echo $large_image_url[0]; ?>');"></div>
 			</div>
 	<?php } else { ?>
 		<div class="frontpage-post">
-	<?php } ?>
-		<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __('%s', 'reactor'), the_title_attribute('echo=0') ) ); ?>" rel="bookmark">
 			<h2 class="entry-title"><?php the_title(); ?></h2>
-		</a>
+	<?php } ?>
 	</div>
 <?php }
 add_action('reactor_post_frontpage', 'reactor_post_frontpage_format', 1);
@@ -109,9 +107,7 @@ function reactor_post_catpage_format() {
 	<div class="catpage-post">
 	<?php } ?>
 		<div class="catpage-post-inner">
-			<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __('%s', 'reactor'), the_title_attribute('echo=0') ) ); ?>" rel="bookmark">
-				<h2 class="entry-title"><?php the_title(); ?></h2>
-			</a>
+			<h2 class="entry-title"><?php the_title(); ?></h2>
 			<p class="catexcerpt"><?php echo smart_trim(get_the_content(),25); ?></p>
 			<?php 
 			$showcomments = ( is_search() ) ? false : true;
@@ -201,7 +197,7 @@ $format = ( get_post_format() ) ? get_post_format() : 'standard';
 		<?php break; 
 	}
 }
-add_action('reactor_post_footer', 'reactor_do_post_footer_title', 1);
+//add_action('reactor_post_footer', 'reactor_do_post_footer_title', 1);
 
 
 /**
@@ -224,14 +220,14 @@ function reactor_do_post_body_social() {
 	$social_string = '<div class="post-body-social"><ul class="inline-list">';
 	//Twitter button
 	$social_string .= sprintf(
-	    '<li class="post-meta-social pm-twitter"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://twitter.com/share?text=%1$s&amp;url=%2$s&amp;via=%3$s\', \'twitwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-twitter">Twitter</span></a></li>',
+	    '<li class="post-meta-social pm-twitter"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://twitter.com/share?text=%1$s&amp;url=%2$s&amp;via=%3$s\', \'twitwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-twitter"></span></a></li>',
 	    urlencode(html_entity_decode($text, ENT_COMPAT, 'UTF-8') . ':'),
 	    rawurlencode( get_permalink() ),
 	    'rvrb'
 	);
 	//Facebook share
 	$social_string .= sprintf(
-	    '<li class="post-meta-social pm-facebook"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=%1$s&amp;p[images][0]=%2$s&amp;p[title]=%3$s&amp;p[summary]=%4$s\', \'fbwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-facebook">Facebook</span></a></li>',
+	    '<li class="post-meta-social pm-facebook"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=%1$s&amp;p[images][0]=%2$s&amp;p[title]=%3$s&amp;p[summary]=%4$s\', \'fbwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-facebook"></span></a></li>',
 	    rawurlencode( get_permalink() ),
 	    rawurlencode( $image[0] ),
 	    urlencode( html_entity_decode($text, ENT_COMPAT, 'UTF-8') ),
@@ -239,33 +235,33 @@ function reactor_do_post_body_social() {
 	);
 	//Google plus share
 	$social_string .= sprintf(
-	    '<li class="post-meta-social pm-googleplus"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://plus.google.com/share?url=%1$s\', \'gpluswin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-google-plus">Google+</span></a></li>',
+	    '<li class="post-meta-social pm-googleplus"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://plus.google.com/share?url=%1$s\', \'gpluswin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-google-plus"></span></a></li>',
 	    rawurlencode( get_permalink() )
 	);
 	//Linkedin share
 	$social_string .= sprintf(
-	    '<li class="post-meta-social pm-linkedin"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://www.linkedin.com/shareArticle?mini=true&amp;url=%1$s&amp;title=%2$s&amp;source=%3$s\', \'linkedwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-linkedin">LinkedIn</span></a></li>',
+	    '<li class="post-meta-social pm-linkedin"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://www.linkedin.com/shareArticle?mini=true&amp;url=%1$s&amp;title=%2$s&amp;source=%3$s\', \'linkedwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-linkedin"></span></a></li>',
 	    rawurlencode( get_permalink() ),
 	    urlencode( html_entity_decode($text, ENT_COMPAT, 'UTF-8') ),
 	    rawurlencode( home_url() )
 	);
 	//Pinterest Pin This
 	$social_string .= sprintf(
-	    '<li class="post-meta-social pm-pinterest"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://pinterest.com/pin/create/button/?url=%1$s&amp;media=%2$s&amp;description=%3$s\', \'pintwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-pinterest">Pinterest</span></a></li>',
+	    '<li class="post-meta-social pm-pinterest"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://pinterest.com/pin/create/button/?url=%1$s&amp;media=%2$s&amp;description=%3$s\', \'pintwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-pinterest"></span></a></li>',
 	    rawurlencode( get_permalink() ),
 	    rawurlencode( $image[0] ),
 	    urlencode( html_entity_decode($text, ENT_COMPAT, 'UTF-8') )
 	);
 	//Reddit submit
 	$social_string .= sprintf(
-	    '<li class="post-meta-social pm-reddit"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://www.reddit.com/submit?url=%1$s&amp;title=%2$s\', \'redditwin\', \'left=20,top=20,width=900,height=700,toolbar=1,resizable=1\');"><span class="fi-social-reddit">Reddit</span></a></li>',
+	    '<li class="post-meta-social pm-reddit"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://www.reddit.com/submit?url=%1$s&amp;title=%2$s\', \'redditwin\', \'left=20,top=20,width=900,height=700,toolbar=1,resizable=1\');"><span class="fi-social-reddit"></span></a></li>',
 	    rawurlencode( get_permalink() ),
 	    urlencode( html_entity_decode($text, ENT_COMPAT, 'UTF-8') )
 	);
 	$social_string .= '<div class="clear"></div></ul></div>';
 	echo $social_string;
 }
-//add_action('reactor_post_footer', 'reactor_do_post_body_social', 2);
+add_action('reactor_post_footer', 'reactor_do_post_body_social', 2);
 
 /**
  * Post footer meta

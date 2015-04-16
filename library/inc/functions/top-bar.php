@@ -15,7 +15,7 @@ if ( !function_exists('reactor_top_bar') ) {
 		$defaults = array(
 			'title'      => get_bloginfo('name'),
 			'title_url'  => home_url(),
-			'menu_name'  => 'Menu',
+			'menu_name'  => '',
 			'left_menu'  => 'reactor_top_bar_l',
 			'right_menu' => 'reactor_top_bar_r',
 			'fixed'      => false,
@@ -43,6 +43,7 @@ if ( !function_exists('reactor_top_bar') ) {
 				$output .= '<nav class="top-bar" data-topbar>';
 					$output .= '<ul class="title-area">';
 						$output .= '<li class="name">';
+							$output .= '<a href="http://www.denverpost.com"><img src="' . get_stylesheet_directory_uri() . '/images/logo-dp-small.png" /></a>';
 							$output .= '<p><a href="' . $args['title_url'].'">' . $args['title'] . '</a></p>';
 						$output .= '</li>';
 						$output .= '<li class="toggle-topbar menu-icon"><a href="#"><span>' . $args['menu_name'] . '</span></a></li>';
