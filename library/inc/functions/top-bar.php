@@ -49,7 +49,8 @@ if ( !function_exists('reactor_top_bar') ) {
 						$output .= '<li class="toggle-topbar menu-icon"><a href="#"><span>' . $args['menu_name'] . '</span></a></li>';
 					$output .= '</ul>';
 					$output .= '<section class="top-bar-section">';
-						$output .= $left_menu;
+						$output .= reactor_topbar_parts();
+						$output .= reactor_topbar_days();
 						$output .= $right_menu;
 					$output .= '</section>';
 				$output .= '</nav>';
@@ -60,6 +61,73 @@ if ( !function_exists('reactor_top_bar') ) {
 	}
 }
 
+
+/**
+ * Function to use search form in top bar
+ * this chould be used as the callback for top bar menus
+ *
+ * @since 1.0.0
+ */
+if(!function_exists('reactor_topbar_days')) {
+	function reactor_topbar_days( $args = '' ) {
+
+		$args = array(
+	        'orderby'       => 'name',
+	        'name__like'    => 'Day ',
+	        'hide_empty'    => true
+	        );
+	    $tags = get_tags( $args );
+
+	    $output  = '<ul class="right"><li class="has-form"><div class="row collapse">';
+	    $output .= '<select onChange="window.location.href=this.value">';
+	    $output .= '<option selected disabled hidden value="">Day</option>';
+	    
+	    foreach ( $tags as $tag ) {
+	        $tag_link = get_tag_link( $tag->term_id );
+	                
+	        $output .= '<option value="' . $tag_link . '" title="' . $tag->name . '" class="' . $tag->slug . '">' . $tag->name . '</option>';
+	    }
+	    
+	    $output .= '</select>';
+		$output .= '</div></li></ul>';
+	    
+		return apply_filters('reactor_search_form', $output);
+	}
+}
+
+/**
+ * Function to use search form in top bar
+ * this chould be used as the callback for top bar menus
+ *
+ * @since 1.0.0
+ */
+if(!function_exists('reactor_topbar_parts')) {
+	function reactor_topbar_parts( $args = '' ) {
+	
+		$args = array(
+	        'orderby'       => 'name',
+	        'hide_tmpty'    => true
+	        );
+	    $categories = get_categories( $args );
+
+	    $output  = '<ul class="right"><li class="has-form"><div class="row collapse">';
+	    $output .= '<select onChange="window.location.href=this.value">';
+	    $output .= '<option selected disabled hidden value="">Trial Part</option>';
+	    
+	    foreach ( $categories as $category ) {
+	    	if ( strtolower( $category->name ) != 'uncategorized' ) {
+		        $category_link = get_category_link( $category->term_id );
+		                
+		        $output .= '<option value="' . $category_link . '" title="' . $category->name . '" class="' . $category->slug . '">' . $category->name . '</option>';
+		    }
+	    }
+	    
+	    $output .= '</select>';
+		$output .= '</div></li></ul>';
+	    
+		return apply_filters('reactor_search_form', $output);
+	}
+}
 
 /**
  * Function to use search form in top bar
@@ -87,6 +155,6 @@ if(!function_exists('reactor_topbar_search')) {
 		$output .= '</div></form>';	
 		$output .= '</li></ul>';
 		
-		return apply_filters('reactor_search_form', $output);
+		//return apply_filters('reactor_search_form', $output);
 	}
 }
