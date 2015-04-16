@@ -51,6 +51,10 @@ All found in **Appearance -> Customize**
 	* If on beta/prod, connect Jetpack to Wordpress using the DPO account.
 2. AP Style Dates and Times
 	* Activate plugin
+	* in Settings->AP Dates & Times:
+		* Check *Capitalize the word "today"*
+		* Check *Yes, capitalize 'noon' and 'midnight'*
+
 3. Disqus
 	* Disable the Disqus plugin. There are no comments on this site.
 
