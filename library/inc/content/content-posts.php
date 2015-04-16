@@ -43,6 +43,55 @@ function reactor_do_post_header_meta() {
 
 	if ( is_front_page() ) {
 		reactor_post_meta( array( 'date_only'=>true ) );
+		global $wp;
+		global $post;
+
+		$classes = ' ' . implode( ' ', get_post_class() );
+		$text = html_entity_decode(get_the_title());
+		if ( (is_single() || is_page() ) && has_post_thumbnail($post->ID) ) {
+			$image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large');
+		} else {
+			$image = get_stylesheet_directory_uri() . '/images/logo-large.png';
+		}
+		$desc = ( get_the_excerpt() != '' ? get_the_excerpt() : get_bloginfo('description') );
+		$post_url = urlencode( get_bloginfo( 'url' ) . '#post-' . $post->ID );
+		$social_string = '<div class="post-body-social' . $classes . '"><ul class="inline-list">';
+		//Twitter button
+		$social_string .= sprintf(
+		    '<li class="post-meta-social pm-twitter"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://twitter.com/share?text=%1$s&amp;url=%2$s&amp;via=%3$s&amp;hashtags=%4$s\', \'twitwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-twitter"></span></a></li>',
+		    urlencode( html_entity_decode( $text, ENT_COMPAT, 'UTF-8') . ':' ),
+		    $post_url,
+		    'denverpost',
+		    'theatershooting'
+		);
+		//Facebook share
+		$social_string .= sprintf(
+		    '<li class="post-meta-social pm-facebook"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=%1$s&amp;p[images][0]=%2$s&amp;p[title]=%3$s&amp;p[summary]=%4$s\', \'fbwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-facebook"></span></a></li>',
+		    $post_url,
+		    rawurlencode( $image[0] ),
+		    urlencode( html_entity_decode( $text, ENT_COMPAT, 'UTF-8' ) ),
+		    urlencode( html_entity_decode( $desc, ENT_COMPAT, 'UTF-8' ) )
+		);
+		//Google plus share
+		$social_string .= sprintf(
+		    '<li class="post-meta-social pm-googleplus"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://plus.google.com/share?url=%1$s\', \'gpluswin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-google-plus"></span></a></li>',
+		    $post_url
+		);
+		//Linkedin share
+		$social_string .= sprintf(
+		    '<li class="post-meta-social pm-linkedin"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://www.linkedin.com/shareArticle?mini=true&amp;url=%1$s&amp;title=%2$s&amp;source=%3$s\', \'linkedwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-linkedin"></span></a></li>',
+		    $post_url,
+		    urlencode( html_entity_decode( $text, ENT_COMPAT, 'UTF-8' ) ),
+		    'http://www.denverpost.com'
+		);
+		//Reddit submit
+		$social_string .= sprintf(
+		    '<li class="post-meta-social pm-reddit"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://www.reddit.com/submit?url=%1$s&amp;title=%2$s\', \'redditwin\', \'left=20,top=20,width=900,height=700,toolbar=1,resizable=1\');"><span class="fi-social-reddit"></span></a></li>',
+		    $post_url,
+		    urlencode( html_entity_decode( $text, ENT_COMPAT, 'UTF-8' ) )
+		);
+		$social_string .= '<div class="clear"></div></ul></div>';
+		echo $social_string;
 	}
 }
 add_action( 'reactor_post_before', 'reactor_do_post_header_meta', 1 );
@@ -73,11 +122,10 @@ function reactor_post_frontpage_format() {
 			<h2 class="entry-title"><?php the_title(); ?></h2>
 			<?php create_video_embed( $vidembed );
 	} else if ( isset( $large_image_url ) && strlen( $large_image_url[0] ) >= 1 ) { ?>
-		<div class="frontpage-image frontpage-post" style="background-image:url('<?php echo $large_image_url[0]; ?>');">
+		<div class="frontpage-image frontpage-post">
 			<h2 class="entry-title"><?php the_title(); ?></h2>
-			<div class="front-thumbnail">
+			<div class="front-thumbnail" style="background-image:url('<?php echo $large_image_url[0]; ?>');">
 				<div class="front-imgholder"></div>
-				<div class="front-img" style="background-image:url('<?php echo $large_image_url[0]; ?>');"></div>
 			</div>
 	<?php } else { ?>
 		<div class="frontpage-post">
@@ -174,121 +222,6 @@ function reactor_do_standard_thumbnail() {
 	<?php }
 }
 add_action('reactor_post_header', 'reactor_do_standard_thumbnail', 4);
-            
-/**
- * Post footer title 
- * in format-audio, format-gallery, format-image, format-video
- * 
- * @since 1.0.0
- */
-function reactor_do_post_footer_title() {
-$format = ( get_post_format() ) ? get_post_format() : 'standard'; 
-
-    switch ( $format ) { 
-		case 'audio' : 
-		case 'gallery' :
-		case 'image' :
-		case 'video' : ?>
-        
-            <h2 class="entry-title">
-                <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __('%s', 'reactor'), the_title_attribute('echo=0') ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
-            </h2>
-               
-		<?php break; 
-	}
-}
-//add_action('reactor_post_footer', 'reactor_do_post_footer_title', 1);
-
-
-/**
- * Post body social links
- * in format-standard
- * 
- * @since 1.0.0
- */
-function reactor_do_post_body_social() {
-	global $wp;
-	global $post;
-
-	$text = html_entity_decode(get_the_title());
-	if ( (is_single() || is_page() ) && has_post_thumbnail($post->ID) ) {
-		$image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large');
-	} else {
-		$image = get_stylesheet_directory_uri() . '/images/logo-large.png';
-	}
-	$desc = ( get_the_excerpt() != '' ? get_the_excerpt() : get_bloginfo('description') );
-	$social_string = '<div class="post-body-social"><ul class="inline-list">';
-	//Twitter button
-	$social_string .= sprintf(
-	    '<li class="post-meta-social pm-twitter"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://twitter.com/share?text=%1$s&amp;url=%2$s&amp;via=%3$s\', \'twitwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-twitter"></span></a></li>',
-	    urlencode(html_entity_decode($text, ENT_COMPAT, 'UTF-8') . ':'),
-	    rawurlencode( get_permalink() ),
-	    'rvrb'
-	);
-	//Facebook share
-	$social_string .= sprintf(
-	    '<li class="post-meta-social pm-facebook"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=%1$s&amp;p[images][0]=%2$s&amp;p[title]=%3$s&amp;p[summary]=%4$s\', \'fbwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-facebook"></span></a></li>',
-	    rawurlencode( get_permalink() ),
-	    rawurlencode( $image[0] ),
-	    urlencode( html_entity_decode($text, ENT_COMPAT, 'UTF-8') ),
-	    urlencode( html_entity_decode( $desc, ENT_COMPAT, 'UTF-8' ) )
-	);
-	//Google plus share
-	$social_string .= sprintf(
-	    '<li class="post-meta-social pm-googleplus"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://plus.google.com/share?url=%1$s\', \'gpluswin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-google-plus"></span></a></li>',
-	    rawurlencode( get_permalink() )
-	);
-	//Linkedin share
-	$social_string .= sprintf(
-	    '<li class="post-meta-social pm-linkedin"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://www.linkedin.com/shareArticle?mini=true&amp;url=%1$s&amp;title=%2$s&amp;source=%3$s\', \'linkedwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-linkedin"></span></a></li>',
-	    rawurlencode( get_permalink() ),
-	    urlencode( html_entity_decode($text, ENT_COMPAT, 'UTF-8') ),
-	    rawurlencode( home_url() )
-	);
-	//Pinterest Pin This
-	$social_string .= sprintf(
-	    '<li class="post-meta-social pm-pinterest"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://pinterest.com/pin/create/button/?url=%1$s&amp;media=%2$s&amp;description=%3$s\', \'pintwin\', \'left=20,top=20,width=500,height=500,toolbar=1,resizable=1\');"><span class="fi-social-pinterest"></span></a></li>',
-	    rawurlencode( get_permalink() ),
-	    rawurlencode( $image[0] ),
-	    urlencode( html_entity_decode($text, ENT_COMPAT, 'UTF-8') )
-	);
-	//Reddit submit
-	$social_string .= sprintf(
-	    '<li class="post-meta-social pm-reddit"><a href="javascript:void(0)" onclick="javascript:window.open(\'http://www.reddit.com/submit?url=%1$s&amp;title=%2$s\', \'redditwin\', \'left=20,top=20,width=900,height=700,toolbar=1,resizable=1\');"><span class="fi-social-reddit"></span></a></li>',
-	    rawurlencode( get_permalink() ),
-	    urlencode( html_entity_decode($text, ENT_COMPAT, 'UTF-8') )
-	);
-	$social_string .= '<div class="clear"></div></ul></div>';
-	echo $social_string;
-}
-add_action('reactor_post_footer', 'reactor_do_post_body_social', 2);
-
-/**
- * Post footer meta
- * in all formats
- * 
- * @since 1.0.0
- */
-function reactor_do_post_footer_meta() {
-
-	if ( is_single() ) {
-		reactor_post_meta( array('show_photo' => true) );
-	} else {
-		if ( is_page_template('page-templates/front-page.php') ) {
-			$post_meta = reactor_option('frontpage_post_meta', 1);
-		}
-		elseif ( is_page_template('page-templates/news-page.php') ) {
-			$post_meta = reactor_option('newspage_post_meta', 1);
-		} else {
-			$post_meta = reactor_option('post_meta', 1);
-		}
-
-		if ( $post_meta && current_theme_supports('reactor-post-meta') ) {
-			reactor_post_meta();
-		}
-	}
-}
-//add_action('reactor_post_footer', 'reactor_do_post_footer_meta', 3);
 
 /**
  * Single post nav 

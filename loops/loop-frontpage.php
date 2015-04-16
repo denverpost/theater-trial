@@ -39,7 +39,7 @@ $page_links = reactor_option('frontpage_page_links', 0); ?>
                         
                         <?php while ( $frontpage_query->have_posts() ) : $frontpage_query->the_post(); global $more; $more = 0; $i++; ?>
                         	
-                            <div class="row">
+                            <div class="row infinite-article">
                             	<div class="large-3 medium-12 small-12 columns">
 	                            	<?php reactor_post_before(); ?>
 	                            </div>

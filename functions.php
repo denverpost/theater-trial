@@ -277,18 +277,18 @@ function custom_infinite_scroll_js() {
         },
         "nextSelector":"ul.pagination li a.next",
         "navSelector":"ul.pagination",
-        "itemSelector":"article",
+        "itemSelector":".infinite-article",
         "contentSelector":"#frontpagemain",
         "bufferPx":80
     };
     jQuery( infinite_scroll.contentSelector ).infinitescroll( infinite_scroll, function(newElements) {
-            jQuery( infinite_scroll.contentSelector ).append('<div class="inline-cube-ad"><iframe src="<?php echo get_stylesheet_directory_uri(); ?>/ad.html" style="margin:1em auto;width:300px;height:250px;overflow:hidden;border:none;"></iframe></div>');
+            jQuery( infinite_scroll.contentSelector ).append('<div class="row"><div class="large-12 medium-12 small-12 text-center columns"><div class="inline-cube-ad"><iframe src="<?php echo get_stylesheet_directory_uri(); ?>/ad.html" style="margin:1em auto;width:300px;height:250px;overflow:hidden;border:none;"></iframe></div></div></div>');
         });
     </script>
     <?php
     }
 }
-add_action( 'wp_footer', 'custom_infinite_scroll_js',100 );
+add_action( 'wp_footer', 'custom_infinite_scroll_js', 100 );
 
 /**
  * Video embeds
