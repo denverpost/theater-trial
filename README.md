@@ -19,14 +19,14 @@ A child theme for Reactor designed for The Denver Post's Aurora theater shooting
 ### Site settings
 
 1. Go to Settings -> General
-	* Set the Site Title to "Theater Trial"
+	* Set the Site Title to "Theater Shooting Trial"
 
 ### Theme Customizations
 
 All found in **Appearance -> Customize**
 
 1. General
-	* Set *Title* to **Theater Trial**
+	* Set *Title* to **Theater Shooting Trial**
 	* Set *Tagline* to **Aurora theater shooting trial coverage from The Denver Post**
 	* Uncheck *Show Title & Tagline*
 2. Navigation
@@ -41,9 +41,9 @@ All found in **Appearance -> Customize**
 	* Set *Content Font* to **PT Sans**
 4. Front Page
 	* Set *Post Columns* to **1 Column**
-	* Set *Number of Posts* to **15** or adjust as desired
+	* Set *Number of Posts* to **10** or adjust as desired
 	* Uncheck *Link Post Titles*
-	* Uncheck *Show Page Links*
+	* Check *Show Page Links*
 
 ### Plugin Setup
 
@@ -54,9 +54,23 @@ All found in **Appearance -> Customize**
 	* in Settings->AP Dates & Times:
 		* Check *Capitalize the word "today"*
 		* Check *Yes, capitalize 'noon' and 'midnight'*
-
 3. Disqus
 	* Disable the Disqus plugin. There are no comments on this site.
+4. Wordpress SEO
+	* Under SEO->Social:
+		1. Accounts tab:
+			* Set *Facebook Page URL* to **http://facebook.com/denverpost**
+			* Set *Twitter Username* to **denverpost**
+			* Set *Google+ URL* to **http://plus.google.com/+DenverPost**
+		2. Facebook tab:
+			* **Check** *Add Open Graph meta data*
+		3. Twitter tab:
+			* **Check** *Add Twitter card meta data*
+		4. Google+ tab:
+			* **Check** *Add Google+ specific post meta data*
+	* Under SEO->Advanced
+		1. Permalinks tab:
+			* **Check** *Strip the category base...*
 
 ### Set up Pages
 
@@ -78,3 +92,16 @@ When adding items to menus, you can add or edit the *Navigation label* (displaye
 * Must be named **top bar**
 * Assign to the *Top Bar Right* position
 * Add top-level categories and place sub categories beneath them as desired
+
+### Discussion
+
+1. Go to Settings->Discussion and:
+2. **Uncheck**:
+	* Attempt to notify any blogs linked to from the article
+	* Allow link notifications from other blogs (pingbacks and trackbacks)
+	* Allow people to post comments on new articles
+	* Anyone posts a comment  
+	* A comment is held for moderation
+3. **Check**:
+	* Comment must be manually approved
+4. Click **Save Changes**

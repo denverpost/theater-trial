@@ -26,7 +26,7 @@ function reactor_register_scripts() {
 	//Added DJS
 	wp_register_script('dfmcore-js', '//local.digitalfirstmedia.com/common/dfm/assets/js/dfm-core-level1.js', array(), false, false);
 	wp_register_script('tt-functions', get_stylesheet_directory_uri() . '/library/js/functions.js', array(), false, true);
-	wp_register_script('gads-js', '//www.googletagservices.com/tag/js/gpt.js', array(), false, false);
+	wp_register_script('ooyala', '//player.ooyala.com/v3/fce2cf476df14253a15351f1727031b4', array(), false, false);
 	wp_register_script('jquery-infinite', get_stylesheet_directory_uri() . '/library/js/jquery.infinitescroll.min.js', array(), false, true);
 }
 
@@ -42,7 +42,7 @@ function reactor_enqueue_scripts() {
 		//Added DJS
 		wp_enqueue_script('dfmcore-js');
 		wp_enqueue_script('tt-functions');
-		wp_enqueue_script('gads-js');
+		wp_enqueue_script('ooyala');
 		wp_enqueue_script('jquery-infinite');
 
 		// enqueue quicksand on portfolio page template

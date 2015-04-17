@@ -278,6 +278,9 @@ div.entry-meta-date.format-chat time:before {
 }
 
 /* the rest */
+ul.pagination {
+    display: none;
+}
 #content {
     margin-top:2.5em;
 }
