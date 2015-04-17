@@ -278,14 +278,29 @@ div.entry-meta-date.format-chat time:before {
 }
 
 /* embedded tweets */
-blockquote {
+.post.format-chat .entry-content {
     border:none;
+    padding:0;
+}
+blockquote {
+    border-left:none;
 }
 blockquote.twitter-tweet {
-    background-image: url(https://si0.twimg.com/images/dev/cms/intents/bird/bird_gray/bird_32_gray.png);
+    background-image: url(images/twitter-bird.png);
     background-position:right center;
+    background-size:20%;
     background-repeat: no-repeat;
     border:none;
+}
+.post.format-quote .entry-content p:nth-child(2n),
+.post.format-chat .entry-content p:nth-child(2n) {
+    background:none;
+}
+.post.format-quote .entry-content p:last-child,
+.post.format-chat .entry-content p:last-child {
+    font-weight:600;
+    font-size:1.1em;
+    text-align:right;
 }
 
 /* the rest */
