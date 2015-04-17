@@ -1,9 +1,9 @@
 <?php
 /**
- * Template Name: Front Page
+ * The template for displaying posts by tag
  *
  * @package Reactor
- * @subpackage Page-Templates
+ * @subpackge Templates
  * @since 1.0.0
  */
 ?>
@@ -13,15 +13,22 @@
 	<div id="primary" class="site-content">
     
     	<?php reactor_content_before(); ?>
-  
+    
         <div id="content" role="main">
         	<div class="row">
                 <div class="large-8 medium-12 small-12 large-centered medium-centered columns" id="frontpagemain">
                 
                 <?php reactor_inner_content_before(); ?>
-                        
-                    <?php get_template_part('loops/loop', 'frontpage'); ?>
-                    
+                
+				<?php if ( have_posts() ) : ?>
+                    <header class="archive-header">
+                        <h1 <?php post_class('archive-title'); ?>><?php echo single_tag_title('', false); ?></h1>
+                    </header><!-- .archive-header -->
+                <?php endif; // end have_posts() check ?> 
+                
+				<?php // get the loop
+				get_template_part('loops/loop', 'tagpage'); ?>
+                
                 <?php reactor_inner_content_after(); ?>
                 
                 </div><!-- .columns -->

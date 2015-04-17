@@ -80,7 +80,7 @@ if(!function_exists('reactor_topbar_days')) {
 
 	    $output  = '<ul class="right"><li class="has-form"><div class="row collapse">';
 	    $output .= '<select onChange="window.location.href=this.value">';
-	    $output .= '<option selected disabled hidden value="">Day</option>';
+	    $output .= '<option selected disabled hidden value="">By Day</option>';
 	    
 	    foreach ( $tags as $tag ) {
 	        $tag_link = get_tag_link( $tag->term_id );
@@ -112,7 +112,7 @@ if(!function_exists('reactor_topbar_parts')) {
 
 	    $output  = '<ul class="right"><li class="has-form"><div class="row collapse">';
 	    $output .= '<select onChange="window.location.href=this.value">';
-	    $output .= '<option selected disabled hidden value="">Trial Part</option>';
+	    $output .= '<option selected disabled hidden value="">By Segment</option>';
 	    
 	    foreach ( $categories as $category ) {
 	    	if ( strtolower( $category->name ) != 'uncategorized' ) {

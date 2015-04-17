@@ -309,6 +309,23 @@ function create_video_embed( $video_ID ){
 }
 
 /**
+ * A way to get the URL of the current page -- not the current post in the loop
+ */
+function get_current_page_url() {
+    $pageURL = 'http';
+    if( isset($_SERVER["HTTPS"]) ) {
+        if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+    }
+    $pageURL .= "://";
+    if ($_SERVER["SERVER_PORT"] != "80") {
+        $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+    } else {
+        $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+    }
+    return $pageURL;
+}
+
+/**
  * Completely disable all comments and pingbacks
  */
 

@@ -106,6 +106,14 @@ time.entry-date .entry-date-time {
 .top-bar-section ul li>a {
     font-size:18px;
 }
+.top-bar .has-form select {
+    margin:.25em 0;
+    font-size:.75em;
+    font-weight:600;
+    padding-right:1.5em;
+    background-color:#c9c9c9;
+    border:none;
+}
 /* date/time colors */
 div.entry-meta-date.format-quote {
     background-color: rgba(91,120,90,1.0);
@@ -270,20 +278,24 @@ div.entry-meta-date.format-chat time:before {
 }
 
 /* the rest */
-body.home #content {
+#content {
     margin-top:2.5em;
 }
-body.home article .entry-body {
+article .entry-body {
     margin-bottom:4.5em;
     padding-bottom:4.5em;
 }
-body.home article .entry-body h2.entry-title {
+.post.format-audio .entry-title,
+.post.format-image .entry-title,
+.post.format-video .entry-title,
+.post.format-gallery .entry-title,
+article .entry-body h2.entry-title {
     margin-top:0;
     font-size:2em;
     line-height:1.2;
     font-weight:900;
 }
-body.home .inline-cube-ad {
+.inline-cube-ad {
     margin-bottom:4.5em;
 }
 .wp-caption img {
@@ -355,6 +367,14 @@ body.home .inline-cube-ad {
 }
 .vid-embed-wrap:hover .play_icon {
     opacity:0.925;
+}
+@media screen and (min-width:1024px) {
+    .top-bar .has-form {
+        padding:0 .25em 0 .5em;
+    }
+    .top-bar ul:first-child .has-form {
+        padding-right:1em;
+    }
 }
 @media screen and (max-width:1024px) {
     .top-bar .title-area {

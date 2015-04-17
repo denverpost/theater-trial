@@ -25,7 +25,7 @@ function reactor_register_scripts() {
 	wp_register_script('mixitup-js', get_template_directory_uri() . '/library/js/mixitup.min.js', array(), false, true);
 	//Added DJS
 	wp_register_script('dfmcore-js', '//local.digitalfirstmedia.com/common/dfm/assets/js/dfm-core-level1.js', array(), false, false);
-	wp_register_script('jquery-inview', get_stylesheet_directory_uri() . '/library/js/jquery.inview.min.js', array(), false, true);
+	wp_register_script('tt-functions', get_stylesheet_directory_uri() . '/library/js/functions.js', array(), false, true);
 	wp_register_script('gads-js', '//www.googletagservices.com/tag/js/gpt.js', array(), false, false);
 	wp_register_script('jquery-infinite', get_stylesheet_directory_uri() . '/library/js/jquery.infinitescroll.min.js', array(), false, true);
 }
@@ -41,13 +41,9 @@ function reactor_enqueue_scripts() {
 		wp_enqueue_script('reactor-js');
 		//Added DJS
 		wp_enqueue_script('dfmcore-js');
-		wp_enqueue_script('jquery-inview');
+		wp_enqueue_script('tt-functions');
 		wp_enqueue_script('gads-js');
-
-		//enqueue on front page
-		if ( is_front_page() ) {
-			wp_enqueue_script('jquery-infinite');
-		}
+		wp_enqueue_script('jquery-infinite');
 
 		// enqueue quicksand on portfolio page template
 		if ( is_page_template('page-templates/portfolio.php') ) {
