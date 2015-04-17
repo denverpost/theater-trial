@@ -390,3 +390,14 @@ function remove_media_link( $form_fields, $post ) {
 }
 add_filter( 'attachment_fields_to_edit', 'remove_media_link', 10, 2 );
 update_option('image_default_link_type','none');
+
+function tt_change_feed_item_url( $url )
+{
+    $alt_link = get_post_meta( get_the_ID(), 'target_link', true );
+    if ( wp_validate_redirect( $alt_link, $url ) ) {
+        echo $alt_link;
+    } else {
+        echo $url;
+    }
+}
+add_filter( 'the_permalink_rss', 'tt_change_feed_item_url', 20, 1 );

@@ -277,6 +277,17 @@ div.entry-meta-date.format-chat time:before {
     width:8%;
 }
 
+/* embedded tweets */
+blockquote {
+    border:none;
+}
+blockquote.twitter-tweet {
+    background-image: url(https://si0.twimg.com/images/dev/cms/intents/bird/bird_gray/bird_32_gray.png);
+    background-position:right center;
+    background-repeat: no-repeat;
+    border:none;
+}
+
 /* the rest */
 ul.pagination {
     display: none;
