@@ -105,7 +105,7 @@ function reactor_post_frontpage_format() {
 	if ( has_post_thumbnail() ) {
 		$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');
 	}
-	$vidembed = get_post_meta( get_the_ID(), 'video_ID', true );   	
+	$vidembed = get_post_meta( get_the_ID(), 'video_ID', true );	
 	if ( $vidembed ) {
 		?> <div class="frontpage-post"> 
 			<h2 class="entry-title"><?php the_title(); ?></h2>

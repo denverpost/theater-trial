@@ -19,12 +19,16 @@
                 <div class="large-8 medium-12 small-12 large-centered medium-centered columns" id="frontpagemain">
                 
                 <?php reactor_inner_content_before(); ?>
-                
-				<?php if ( have_posts() ) : ?>
-                    <header class="archive-header">
+
+                <header class="archive-header row collapse">
+                    <div class="large-4 medium-4 small-12 columns">
                         <h1 <?php post_class('archive-title'); ?>><?php echo single_cat_title( '', false ); ?></h1>
-                    </header><!-- .archive-header -->
-                <?php endif; // end have_posts() check ?> 
+                    </div>
+                    <div class="large-6 medium-6 hide-for-small columns">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/top-logo.png" alt="Coverage header logo" class="header-logo" />
+                    </div>
+                    <div class="clear"></div>
+                </header><!-- .archive-header -->
                 
 				<?php // get the loop
 				get_template_part('loops/loop', 'catpage'); ?>

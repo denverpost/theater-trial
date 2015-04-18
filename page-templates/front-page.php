@@ -18,6 +18,13 @@
         	<div class="row">
                 <div class="large-8 medium-12 small-12 large-centered medium-centered columns" id="frontpagemain">
                 
+                <header class="archive-header row collapse">
+                    <div class="large-10 medium-10 small-12 large-centered medium-centered columns">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/top-logo.png" alt="Coverage header logo" class="header-logo" />
+                    </div>
+                    <div class="clear"></div>
+                </header><!-- .archive-header -->
+
                 <?php reactor_inner_content_before(); ?>
                         
                     <?php get_template_part('loops/loop', 'frontpage'); ?>

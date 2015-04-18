@@ -307,8 +307,13 @@ blockquote.twitter-tweet {
 ul.pagination {
     display: none;
 }
-#content {
-    margin-top:2.5em;
+header.row.collapse.archive-header {
+    margin:1.5em auto 3.5em;
+}
+.archive-header h1 {
+    font-size:1.7em;
+    margin-top:.6em;
+    font-weight: 600;
 }
 article .entry-body {
     margin-bottom:4.5em;
@@ -409,6 +414,12 @@ article .entry-body h2.entry-title {
     .top-bar .title-area {
         width:100%;
     }
+    header#header {
+        margin:0;
+    }
+    header.row.collapse.archive-header {
+        margin:.75em auto 2em;
+    }
     body.home article .entry-body {
         margin-bottom:3.5em;
         padding-bottom:3.5em;
@@ -438,6 +449,13 @@ article .entry-body h2.entry-title {
     }
 }
 @media screen and (max-width:670px) {
+    header.row.collapse.archive-header {
+        margin:.75em auto .75em;
+    }
+    .archive-header h1 {
+        margin-top:0;
+        font-weight: 600;
+    }
     body.home article .entry-body {
         margin-bottom:2.5em;
         padding-bottom:2.5em;
