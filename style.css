@@ -77,7 +77,7 @@ time.entry-date .entry-date-time {
     text-align:right;
     padding:0 .5em;
     font-size: 1.1em;
-    font-weight: 700
+    font-weight: 700;
 }
 /* overrides */
 .post.format-audio p,
@@ -315,14 +315,17 @@ div.page-header {
     margin:1.5em auto;
 }
 .archive-header h1 {
-    font-size:1.7em;
+    font-size:2em;
     font-weight: 600;
     text-align:center;
 }
 /* category/tag navigator */
+.row.collapse.archive-footer,
 .row.collapse.archive-header {
     margin-bottom: 3em;
 }
+.row.collapse.archive-footer .right,
+.row.collapse.archive-footer .left,
 .row.collapse.archive-header .right,
 .row.collapse.archive-header .left {
     padding:0;
@@ -331,6 +334,7 @@ div.page-header {
     font-weight:600;
     text-transform: uppercase;
 }
+.row.collapse.archive-footer div a,
 .row.collapse.archive-header div a {
     padding:.5em 0;
     color:#fff;
@@ -339,11 +343,11 @@ div.page-header {
     height:100%;
     background:rgba(17,17,17,0.5);
 }
+.row.collapse.archive-footer div a:hover,
 .row.collapse.archive-header div a:hover {
     color:#fff;
     background:rgba(17,17,17,1.0);
 }
-
 article .entry-body {
     margin-bottom:4.5em;
     padding-bottom:4.5em;
@@ -383,6 +387,7 @@ article .entry-body h2.entry-title {
     line-height: .85;
     right:0;
     top:0;
+    pointer-events:none;
 }
 .format-quote .entry-body blockquote p {
     color:#4f4f4f;
@@ -449,9 +454,9 @@ article .entry-body h2.entry-title {
     header.row.collapse.archive-header {
         margin:.75em auto 2em;
     }
-    body.home article .entry-body {
-        margin-bottom:3.5em;
-        padding-bottom:3.5em;
+    article .entry-body {
+        margin-bottom:3em;
+        padding-bottom:3em;
     }
     div.entry-meta-date,
     time.entry-date {
@@ -481,15 +486,30 @@ article .entry-body h2.entry-title {
     header.row.collapse.archive-header {
         margin:.75em auto .75em;
     }
+    .row.collapse.archive-footer .right,
+    .row.collapse.archive-footer .left,
+    .row.collapse.archive-header .right,
+    .row.collapse.archive-header .left {
+        font-size:1em;
+    }
+    .post.format-audio .entry-title,
+    .post.format-image .entry-title,
+    .post.format-video .entry-title,
+    .post.format-gallery .entry-title,
+    article .entry-body h2.entry-title {
+        font-size:1.6em;
+    }
     .archive-header h1 {
         margin-top:0;
         font-weight: 600;
     }
-    body.home article .entry-body {
-        margin-bottom:2.5em;
-        padding-bottom:2.5em;
+    time.entry-date .entry-date-date,
+    time.entry-date .entry-date-time {
+        padding:0 .25em;
+        font-size: 1em;
     }
-    body.home article .entry-body h2.entry-title {
-        font-size:1.6em;
+    article .entry-body {
+        margin-bottom:1.5em;
+        padding-bottom:1.5em;
     }
 }

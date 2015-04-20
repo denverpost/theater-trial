@@ -32,6 +32,11 @@
                 
 				<?php // get the loop
 				get_template_part('loops/loop', 'catpage'); ?>
+
+                <footer class="archive-footer row collapse">
+                    <?php tt_archive_next_prev(); ?>
+                    <div class="clear"></div>
+                </footer><!-- .archive-footer -->
                 
                 </div><!-- .columns -->
 
