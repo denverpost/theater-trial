@@ -10,29 +10,6 @@
  * @license GNU General Public License v2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
-
-/**
- * Post category overline Icons
- * in all formats when tumblog icons are enabled
- * 
- * @since 1.0.0
- */
-function reactor_do_overline() {
-	if ( is_single() ) {
-		$categories_list = '';
-		$categories = get_the_category();
-		foreach($categories as $category) {
-			if ( strtolower($category->slug) != 'uncategorized' && $category->category_parent == 0) {
-				$categories_list = $category;
-			}
-		} ?>
-        <header class="archive-header">
-            <h2 <?php post_class('archive-title'); ?>><a href="<?php echo get_category_link(intval($categories_list->term_id) ); ?>"><?php echo $categories_list->cat_name; ?></a></h2>
-        </header><!-- .archive-header -->
-	<?php }
-}
-//add_action('reactor_post_before', 'reactor_do_overline', 2);
-
 /**
  * Post header meta
  * in all formats

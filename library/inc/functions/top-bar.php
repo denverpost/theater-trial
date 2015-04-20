@@ -106,7 +106,7 @@ if(!function_exists('reactor_topbar_parts')) {
 	
 		$args = array(
 	        'orderby'       => 'name',
-	        'hide_tmpty'    => true
+	        'hide_empty'    => true
 	        );
 	    $categories = get_categories( $args );
 
