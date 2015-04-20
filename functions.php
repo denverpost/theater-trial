@@ -440,7 +440,7 @@ function tt_archive_next_prev() {
         $prev_cat_position = $this_cat_position - 1;
         if( $prev_cat_position >= 0 ) {
             $prev_cat_id = array_slice( $cat_ids, $prev_cat_position, 1 );
-            echo '<div class="large-2 medium-3 small-5 left">';
+            echo '<div class="large-3 medium-4 small-5 left">';
             echo '<a href="' . get_category_link( $prev_cat_id[0] ) . '">&laquo; ' . get_category( $prev_cat_id[0] )->name . '</a>';
             echo '</div>';
         }
@@ -448,7 +448,7 @@ function tt_archive_next_prev() {
         $next_cat_position = $this_cat_position + 1;
         if( $next_cat_position < count( $cat_ids ) ) {
             $next_cat_id = array_slice( $cat_ids, $next_cat_position, 1 );
-            echo '<div class="large-2 medium-3 small-5 right">';
+            echo '<div class="large-3 medium-4 small-5 right">';
             echo '<a href="' . get_category_link( $next_cat_id[0] ) . '">' . get_category( $next_cat_id[0] )->name . ' &raquo;</a>';
             echo '</div>';
         }
@@ -469,7 +469,7 @@ function tt_archive_next_prev() {
         $prev_tag_position = $this_tag_position - 1;
         if( $prev_tag_position >= 0 ) {
             $prev_tag_id = array_slice( $tag_ids, $prev_tag_position, 1 );
-            echo '<div class="large-2 medium-3 small-5 left">';
+            echo '<div class="large-3 medium-4 small-5 left">';
             echo '<a href="' . get_tag_link( $prev_tag_id[0] ) . '">&laquo; ' . get_tag( $prev_tag_id[0] )->name . '</a>';
             echo '</div>';
         }
@@ -477,7 +477,7 @@ function tt_archive_next_prev() {
         $next_tag_position = $this_tag_position + 1;
         if( $next_tag_position < count( $tag_ids ) ) {
             $next_tag_id = array_slice( $tag_ids, $next_tag_position, 1 );
-            echo '<div class="large-2 medium-3 small-5 right">';
+            echo '<div class="large-3 medium-4 small-5 right">';
             echo '<a href="' . get_tag_link( $next_tag_id[0] ) . '">' . get_tag( $next_tag_id[0] )->name . ' &raquo;</a>';
             echo '</div>';
         }
