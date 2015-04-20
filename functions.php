@@ -430,7 +430,9 @@ function tt_archive_next_prev() {
             );
         $categories = get_categories( $args );
         foreach( $categories as $all_cat ) {
-            $cat_ids[] = $all_cat->term_id;
+            if ( strtolower( $all_cat->name ) != 'uncategorized' ) {
+                $cat_ids[] = $all_cat->term_id;
+            }
         }
         $this_cat = get_query_var( 'cat' );
         $this_cat_position = array_search( $this_cat, $cat_ids );
