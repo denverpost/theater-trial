@@ -80,12 +80,15 @@ time.entry-date .entry-date-time {
     font-weight: 700;
 }
 /* overrides */
+p,
 .post.format-audio p,
 .post.format-gallery p,
 .post.format-image p,
 .post.format-link p,
 .post.format-video p {
-    line-height:1.3;
+    line-height: 1.5;
+    margin-bottom: 1.2em;
+    font-size:1.25em;
 }
 
 /* top-bar stuff */
