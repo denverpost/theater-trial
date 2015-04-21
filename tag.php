@@ -19,7 +19,7 @@
                 <div class="large-8 medium-12 small-12 large-centered medium-centered columns" id="frontpagemain">
                 
                 <div class="large-9 medium-10 hide-for-small large-centered medium-centered columns page-header">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/top-logo.png" alt="Coverage header logo" class="header-logo" />
+                    <a href="<?php echo home_url(); ?>" title="Homepage link"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/top-logo.png" alt="Coverage header logo" class="header-logo" /></a>
                 </div>
 
 				<header class="archive-header row collapse">

@@ -19,8 +19,8 @@
                 <div class="large-8 medium-12 small-12 large-centered medium-centered columns" id="frontpagemain">
                 
                 <header class="archive-header row collapse">
-                    <div class="large-10 medium-10 small-12 large-centered medium-centered columns">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/top-logo.png" alt="Coverage header logo" class="header-logo" />
+                    <div class="large-10 medium-10 small-12 large-centered medium-centered columns page-header">
+                        <a href="<?php echo home_url(); ?>" title="Homepage link"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/top-logo.png" alt="Coverage header logo" class="header-logo" /></a>
                     </div>
                     <div class="clear"></div>
                 </header><!-- .archive-header -->

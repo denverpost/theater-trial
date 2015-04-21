@@ -312,7 +312,7 @@ ul.pagination {
     display: none;
 }
 div.page-header {
-    margin:1.5em auto;
+    margin:1em auto 2em;
 }
 .archive-header h1 {
     font-size:2em;
