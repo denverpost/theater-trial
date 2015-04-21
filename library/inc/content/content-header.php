@@ -30,8 +30,7 @@ function reactor_do_reactor_head() { ?>
 
 <link href='http://fonts.googleapis.com/css?family=Raleway:400,600,700,900|PT+Sans:400,700' rel='stylesheet' type='text/css'>
 
-<?php $favicon_uri = reactor_option('favicon_image') ? reactor_option('favicon_image') : get_template_directory_uri() . '/favicon.ico'; ?>
-<link rel="shortcut icon" href="<?php echo $favicon_uri; ?>">
+<link rel="shortcut icon" href="http://extras.mnginteractive.com/live/media/favicon/dpo/favicon.ico" type="image/x-icon" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
 <?php 
