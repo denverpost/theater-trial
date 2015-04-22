@@ -359,6 +359,7 @@ div.page-header {
 article .entry-body {
     margin-bottom:4.5em;
     padding-bottom:4.5em;
+    border-bottom:0.063em solid #c5c5c5;
 }
 .post.format-audio .entry-title,
 .post.format-image .entry-title,
