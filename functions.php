@@ -483,3 +483,40 @@ function tt_archive_next_prev() {
         }
     }
 }
+
+/**
+ * Add a symple meta box listing trial sections (categories) descriptions
+ * @return [type]
+ */
+function cd_meta_box_cb() {
+    echo '<p><strong>Use these descriptions to help you choose the correct Category for your post</strong></p>
+            <ul>
+            <li><strong>Pre-trial</strong></li>
+            <li><strong>Jury selection</strong></li>
+            <li><strong>Opening statements</strong></li>
+            <li><strong>Victim testimony</strong> (the testimony of victims\' parents or survivors about their injuries)</li>
+            <li><strong>Crime scene</strong> (the crime scene video, how the attack unfolded)</li>
+            <li><strong>Physical evidence</strong> (photos, computer evidence)</li>
+            <li><strong>Planning</strong> (testimony related to preparation for the attack, purchases, practice)</li>
+            <li><strong>CU</strong> (interactions with CU and what they did or didn\'t do)</li>
+            <li><strong>Notebook</strong> (what was in Holmes\' notebook)</li>
+            <li><strong>Psychiatric history</strong> (previous visits to mental health professionals)</li>
+            <li><strong>Psychiatric evaluations</strong> (any and all new evaluations)</li>
+            <li><strong>Explosives</strong> (everything related to the bombs in the apartments)</li>
+            <li><strong>Closing arguments</strong></li>
+            <li><strong>Guilt deliberations</strong></li>
+            <li><strong>Guilt verdict</strong></li>
+            <li><strong>Sentencing opening</strong> (not sure if these actually happen)</li>
+            <li><strong>Aggravators</strong></li>
+            <li><strong>Mitigators</strong> (testimony from Holmes friends, family, etc.)</li>
+            <li><strong>Victim impact</strong> (separate from their testimony about the shooting in the guilt phase)</li>
+            <li><strong>Sentencing closing</strong></li>
+            <li><strong>Sentencing deliberations</strong></li>
+            <li><strong>Sentencing verdict</strong></li>
+            <li><strong>Post-trial</strong></li>
+            </ul>';   
+}
+function cd_meta_box_add() {
+    add_meta_box( 'my-meta-box-id', 'Sections of the trial', 'cd_meta_box_cb', 'post', 'normal', 'high' );
+}
+add_action( 'add_meta_boxes', 'cd_meta_box_add' );
