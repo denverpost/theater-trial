@@ -27,6 +27,8 @@
 <meta property="fb:app_id" content="105517551922"/>
 <meta property="article:publisher" content="https://www.facebook.com/denverpost" />
 
+<meta name="google-site-verification" content="AS2VvSiXejAUPYWy3RnQ_tL-tQ6NAbKWeaEL_O64z8k" />
+
 <meta name="language" content="en, sv" />
 <meta name="Copyright" content="Copyright &copy; The Denver Post." />
 <meta name="description" content="<?php echo $twitter_desc; ?>" />
@@ -42,7 +44,7 @@ if ( is_category() ) {
     $GLOBALS['dfmcat'][0] = $category[0]->cat_name;
 } else if ( is_tag() ) {
     $GLOBALS['dfmcat'][0] = single_tag_title( '', false );
-} else ( is_front_page() ) {
+} else {
     $GLOBALS['dfmcat'][0] = 'Home';
 } ?>
 
@@ -84,13 +86,12 @@ if ( is_category() ) {
 </script>
 
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-42541613-24', 'thecannabist.co');
-    ga('send', 'pageview');
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-62104666-1', 'auto');
+  ga('send', 'pageview');
 </script>
 </head>
 
