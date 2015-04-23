@@ -22,9 +22,6 @@ div.inner-header {
 #mobile-menu .section-container.accordion .section {
     position:none;
 }
-body p, body li {
-    font-size: 1.25em;
-}
 body a {
     color:#7094d9;
 }
@@ -32,6 +29,9 @@ body a:hover,
 body a:active,
 body a:visited {
     color:#306489;
+}
+.top-bar-section ul li>a {
+    font-family: 'PT Sans',Helvetica,Arial,sans-serif;
 }
 /* .main-nav {
     position: absolute;
@@ -80,7 +80,10 @@ time.entry-date .entry-date-time {
     font-weight: 700;
 }
 /* overrides */
+body p,
+body li,
 p,
+li,
 .post.format-audio p,
 .post.format-gallery p,
 .post.format-image p,
