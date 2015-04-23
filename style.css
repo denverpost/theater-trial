@@ -30,9 +30,6 @@ body a:active,
 body a:visited {
     color:#306489;
 }
-.top-bar-section ul li>a {
-    font-family: 'PT Sans',Helvetica,Arial,sans-serif;
-}
 /* .main-nav {
     position: absolute;
     top:1em;
@@ -114,6 +111,7 @@ li,
     float:left;
 }
 .top-bar-section ul li>a {
+    font-family: 'PT Sans',Helvetica,Arial,sans-serif;
     font-size:18px;
 }
 .top-bar .has-form select {
