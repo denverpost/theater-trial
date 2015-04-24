@@ -13,7 +13,7 @@ if ( !function_exists('reactor_top_bar') ) {
 	function reactor_top_bar( $args = '' ) {
 
 		$defaults = array(
-			'title'      => get_bloginfo('name'),
+			'title'      => get_option( 'topbar_title', get_bloginfo('name') ),
 			'title_url'  => home_url(),
 			'menu_name'  => '',
 			'left_menu'  => 'reactor_top_bar_l',
