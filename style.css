@@ -369,6 +369,7 @@ article .entry-body h2.entry-title {
     font-size:2em;
     line-height:1.2;
     font-weight:900;
+    text-transform: uppercase;
 }
 .inline-cube-ad {
     margin-bottom:4.5em;
