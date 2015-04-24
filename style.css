@@ -77,10 +77,8 @@ time.entry-date .entry-date-time {
     font-weight: 700;
 }
 /* overrides */
-body p,
-body li,
-p,
-li,
+#main p,
+#main li,
 .post.format-audio p,
 .post.format-gallery p,
 .post.format-image p,
