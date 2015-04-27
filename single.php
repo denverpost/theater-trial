@@ -16,28 +16,40 @@
     
         <div id="content" role="main">
         	<div class="row">
-                <div class="<?php reactor_columns(); ?>">
+                <div class="large-8 medium-12 small-12 large-centered medium-centered columns" id="frontpagemain">
+                
+                <header class="archive-header row collapse">
+                    <div class="large-10 medium-10 small-12 large-centered medium-centered columns page-header">
+                        <a href="<?php echo home_url(); ?>" title="Homepage link"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/top-logo.png" alt="Coverage header logo" class="header-logo" /></a>
+                    </div>
+                    <div class="clear"></div>
+                </header><!-- .archive-header -->
                 
                 <?php reactor_inner_content_before(); ?>
                 
 					<?php // start the loop
                     while ( have_posts() ) : the_post(); ?>
                     
-                    <?php reactor_post_before(); ?>
-                        
-					<?php // get post format and display code for that format
-                    if ( !get_post_format() ) : get_template_part('post-formats/format', 'single'); 
-					else : get_template_part('post-formats/format', get_post_format() ); endif; ?>
+                    <div class="large-3 medium-12 small-12 columns">
+                        <?php reactor_post_before(); ?>
+                    </div>
+
+                    <div class="large-9 medium-12 small-12 columns">
+                        <?php // get post format and display template for that format
+                            get_template_part('post-formats/format', 'frontpage'); ?>
+                    </div>
                     
-                    <?php reactor_post_after(); ?>
+                    <div class="row">
+                        <div class="large-12 medium-12 small-12 text-center columns">
+                        <?php dp_infinite_ad_widget($post->ID); ?>
+                        </div>
+                    </div>
         
                     <?php endwhile; // end of the loop ?>
                     
                 <?php reactor_inner_content_after(); ?>
                 
                 </div><!-- .columns -->
-                
-                <?php get_sidebar(); ?>
                 
             </div><!-- .row -->
         </div><!-- #content -->
