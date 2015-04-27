@@ -55,6 +55,9 @@ body a:visited {
     padding-bottom: 67%;
     display:block;
 }
+.warning {
+    color:#990000!important;
+}
 div.entry-meta-date,
 time.entry-date {
     display:block;
