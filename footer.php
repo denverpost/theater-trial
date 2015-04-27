@@ -26,7 +26,7 @@
 <script type="text/javascript">
 	var _sf_async_config={};
 	/** CONFIGURATION START **/
-	_sf_async_config.title = "<?php echo addslashes(html_entity_decode(wp_title('', false), ENT_QUOTES, 'UTF-8') ); ?>";
+	_sf_async_config.title = "<?php echo get_bloginfo( 'name' ); ?>";
 	_sf_async_config.uid = 2671;
 	_sf_async_config.domain = "denverpost.com";
 	_sf_async_config.sections = "<?php echo $GLOBALS['dfmcat'][0]; ?>";

@@ -37,7 +37,7 @@
 <?php $GLOBALS['dfmcat'] = '';
   $GLOBALS['dfmby'] = '';
   $GLOBALS['dfmid'] = '';
-  $GLOBALS['dfmthetitle'] = 'Theater Shooting Trial';
+  $GLOBALS['dfmthetitle'] = get_bloginfo( 'name' );
   $GLOBALS['dfmcat'] = array('','');
 if ( is_category() ) {
     $category = get_the_category();
