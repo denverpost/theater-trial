@@ -401,9 +401,9 @@ add_filter( 'the_permalink_rss', 'tt_change_feed_item_url', 20, 1 );
 
 function strip_feed_content( $content ) {
     if ( is_feed() ) {
-        $content = strip_tags( $content, '<p><a><b><br /><li><ol><ul>' );
+        $new_content = strip_tags( $content, '<p><a><b><br /><li><ol><ul>' );
     }
-    return $content;
+    return $new_content;
 }
 add_filter('the_excerpt', 'strip_feed_content', 6, 1);
 add_filter('the_excerpt_rss', 'strip_feed_content', 6, 1);
