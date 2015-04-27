@@ -399,15 +399,16 @@ function tt_change_feed_item_url( $url )
 }
 add_filter( 'the_permalink_rss', 'tt_change_feed_item_url', 20, 1 );
 
-function add_feed_content($content) {
+function strip_feed_content($content) {
     if ( is_feed() ) {
         $content = strip_tags( $content, '<p><a><b><br /><li><ol><ul>' );
     }
     return $content;
 }
-add_filter('the_excerpt_rss', 'add_feed_content');
-add_filter('the_content', 'add_feed_content');
-add_filter('the_content_rss', 'add_feed_content');
+add_filter('the_excerpt', 'strip_feed_content', 1);
+add_filter('the_excerpt_rss', 'strip_feed_content', 1);
+add_filter('the_content', 'strip_feed_content', 1);
+add_filter('the_content_rss', 'strip_feed_content', 1);
 
 /**
  * Category and tag previous/next buttons
