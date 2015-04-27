@@ -79,7 +79,7 @@ if(!function_exists('reactor_topbar_days')) {
 	    $tags = get_tags( $args );
 
 	    $output  = '<ul class="right"><li class="has-form"><div class="row collapse">';
-	    $output .= '<select onChange="window.location.href=this.value">';
+	    $output .= '<select onChange="window.top.location.href=this.value">';
 	    $output .= '<option selected disabled hidden value="">By Day</option>';
 	    
 	    foreach ( $tags as $tag ) {
@@ -111,7 +111,7 @@ if(!function_exists('reactor_topbar_parts')) {
 	    $categories = get_categories( $args );
 
 	    $output  = '<ul class="right"><li class="has-form"><div class="row collapse">';
-	    $output .= '<select onChange="window.location.href=this.value">';
+	    $output .= '<select onChange="window.top.location.href=this.value">';
 	    $output .= '<option selected disabled hidden value="">By Segment</option>';
 	    
 	    foreach ( $categories as $category ) {
