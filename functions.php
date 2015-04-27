@@ -401,15 +401,26 @@ add_filter( 'the_permalink_rss', 'tt_change_feed_item_url', 20, 1 );
 
 function strip_feed_content( $content ) {
     global $post;
-    if ( is_feed() ) {
-        $content = strip_tags( $content, '<p><a><b><br /><li><ol><ul>' );
-    }
+    if ( ! is_feed() )
+        return $content;
+
+    $content = strip_shortcodes( $post->post_content );
+
+    $allowed_tags = array(
+        'p'      => array(),
+        'a'      => array( 'href' => array() ),
+        'strong' => array(),
+        'em'     => array(),
+        'img'    => array( 'src' => array(), 'width' => array(), 'height' => array() ),
+    );
+    $content = wp_kses( $content, $allowed_tags );
+
     return $content;
 }
-add_filter('the_excerpt', 'strip_feed_content', 6, 1);
-add_filter('the_excerpt_rss', 'strip_feed_content', 6, 1);
-add_filter('the_content', 'strip_feed_content', 6, 1);
-add_filter('the_content_rss', 'strip_feed_content', 6, 1);
+add_filter('the_excerpt', 'strip_feed_content');
+add_filter('the_excerpt_rss', 'strip_feed_content');
+add_filter('the_content', 'strip_feed_content');
+add_filter('the_content_rss', 'strip_feed_content');
 
 /**
  * Category and tag previous/next buttons
