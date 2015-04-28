@@ -2,10 +2,36 @@
 <head>
     <script type="text/javascript" src="//www.googletagservices.com/tag/js/gpt.js"></script>
     <style type="text/css">body { margin:0; padding:0; background:#e5e5e5; }</style>
+    <script>
+    var QueryString = function () {
+        // This function is anonymous, is executed immediately and 
+        // the return value is assigned to QueryString!
+        var query_string = {};
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+            // If first entry with this name
+        if (typeof query_string[pair[0]] === "undefined") {
+          query_string[pair[0]] = pair[1];
+            // If second entry with this name
+        } else if (typeof query_string[pair[0]] === "string") {
+          var arr = [ query_string[pair[0]], pair[1] ];
+          query_string[pair[0]] = arr;
+            // If third or later entry with this name
+        } else {
+          query_string[pair[0]].push(pair[1]);
+        }
+        } 
+        return query_string;
+        } ();
+</script>
 </head>
 <body>
-    <div id="div_Cube1">
-        <script type="text/javascript">
+    <script>
+    document.write('<div id="div_Cube' + QueryString.num + '">');
+    </script>
+        <script>
             function windowWidth() {
                 var docElemProp = window.document.documentElement.clientWidth,
                     body = window.document.body;
@@ -13,10 +39,10 @@
             }
             var windowWidthNow = windowWidth();
             if ( windowWidthNow >= 300 && windowWidthNow <= 540 ) {
-                googletag.defineSlot('/8013/denverpost.com/News/Crime/Violent-crime',[300,250], 'div_Cube1').setTargeting('POS','Cube1_RRail_ATF').addService(googletag.pubads());
+                googletag.defineSlot('/8013/denverpost.com/News/Crime/Violent-crime',[300,250], 'div_Cube' + QueryString.num).setTargeting('POS','Cube1_RRail_ATF').addService(googletag.pubads());
                 googletag.pubads().enableSyncRendering();
                 googletag.enableServices();                                         
-                googletag.display('div_Cube1');
+                googletag.display('div_Cube' + QueryString.num);
             }
         </script>
     </div>

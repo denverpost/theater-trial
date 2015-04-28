@@ -257,7 +257,7 @@ if ( strpos($_SERVER['HTTP_HOST'], 'localhost') !== FALSE )
 
 /* an ad that can be pulled in my the front-page loop */
 function dp_infinite_ad_widget($iteration) {
-    echo '<div class="inline-cube-ad"><iframe src="' . get_stylesheet_directory_uri() . '/ad.html" style="margin:1em auto;width:300px;height:250px;overflow:hidden;border:none;"></iframe></div>';
+    echo '<div class="inline-cube-ad"><iframe src="' . get_stylesheet_directory_uri() . '/ad.html?num=' . time() . '" style="margin:1em auto;width:300px;height:250px;overflow:hidden;border:none;"></iframe></div>';
 }
 
 /**
@@ -278,8 +278,9 @@ function custom_infinite_scroll_js() { ?>
         "bufferPx":80
     };
     jQuery( infinite_scroll.contentSelector ).infinitescroll( infinite_scroll, function(newElements) {
-            jQuery( infinite_scroll.contentSelector ).append('<div class="row"><div class="large-12 medium-12 small-12 text-center columns"><div class="inline-cube-ad"><iframe src="<?php echo get_stylesheet_directory_uri(); ?>/ad.html" style="margin:1em auto;width:300px;height:250px;overflow:hidden;border:none;"></iframe></div></div></div>');
-        });
+        var d = new Date();
+        jQuery( infinite_scroll.contentSelector ).append('<div class="row"><div class="large-12 medium-12 small-12 text-center columns"><div class="inline-cube-ad"><iframe src="<?php echo get_stylesheet_directory_uri(); ?>/ad.html?num=' + d.getTime() + '" style="margin:1em auto;width:300px;height:250px;overflow:hidden;border:none;"></iframe></div></div></div>');
+    });
     </script>
     <?php
 }
