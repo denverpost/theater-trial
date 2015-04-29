@@ -29,6 +29,8 @@
 
 <meta name="google-site-verification" content="AS2VvSiXejAUPYWy3RnQ_tL-tQ6NAbKWeaEL_O64z8k" />
 
+<meta http-equiv="refresh" content="1800">
+
 <meta name="language" content="en, sv" />
 <meta name="Copyright" content="Copyright &copy; The Denver Post." />
 <meta name="description" content="<?php echo $twitter_desc; ?>" />
