@@ -36,6 +36,11 @@ var pathRoot = dirPath.substring(0, dirPath.lastIndexOf('/')) + '/';
 var titleRoot = document.title;
 var current = '';
 
+function new_chartbeat() {
+    _sf_async_config.sections="";
+    _sf_async_config.authors="";
+    pSUPERFLY.virtualpage(window.location.href,document.title);
+}
 function load_omniture() {
     var omni = $j('#omniture').html();
     $j('#omniture').after('<div id="new_omni">' + omni + '</div>');
@@ -46,6 +51,7 @@ function build_url(pageNum) {
 }
 function build_title(pageNum) {
     var title = titleRoot + ' - Page ' + pageNum;
+    _sf_async_config.title = _sf_async_config.title + ' - Page ' + pageNum;
     return title;
 }
 function rewrite_url(pageNum) {
