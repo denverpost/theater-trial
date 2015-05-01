@@ -280,7 +280,7 @@ function custom_infinite_scroll_js() { ?>
     jQuery( infinite_scroll.contentSelector ).infinitescroll( infinite_scroll, function(newElements) {
         var d = new Date();
         jQuery( infinite_scroll.contentSelector ).append('<div class="row"><div class="large-12 medium-12 small-12 text-center columns"><div class="inline-cube-ad"><iframe src="<?php echo get_stylesheet_directory_uri(); ?>/ad.html?num=' + d.getTime() + '" style="margin:1em auto;width:300px;height:250px;overflow:hidden;border:none;"></iframe></div></div></div>');
-        jQuery( infinite_scroll.contentSelector ).find(' > div.row:nth-last-child(6)').before('<div class="row"><div class="large-12 medium-12 small-12 text-center columns"><div class="inline-cube-ad"><iframe src="<?php echo get_stylesheet_directory_uri(); ?>/ad.html?num=' + d.getTime() + '" style="margin:1em auto;width:300px;height:250px;overflow:hidden;border:none;"></iframe></div></div></div>');
+        jQuery( infinite_scroll.contentSelector ).find(' > div.row:nth-last-child(6)').before('<div class="row"><div class="large-12 medium-12 small-12 text-center columns"><div class="inline-cube-ad"><iframe src="<?php echo get_stylesheet_directory_uri(); ?>/ad.html?num=' + d.getTime() + '2" style="margin:1em auto;width:300px;height:250px;overflow:hidden;border:none;"></iframe></div></div></div>');
         new_view(infinitePage,load_omniture);
         infinitePage++;
     });
