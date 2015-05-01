@@ -33,7 +33,6 @@
 
 <meta name="language" content="en, sv" />
 <meta name="Copyright" content="Copyright &copy; The Denver Post." />
-<meta name="description" content="<?php echo $twitter_desc; ?>" />
 <meta name="news_keywords" content="Aurora, theater, shooting, trial, James Holmes, Arapahoe County, Colorado, Batman, Century 16, crime" />
 
 <?php $GLOBALS['dfmcat'] = '';
