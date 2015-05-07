@@ -25,11 +25,17 @@
         } 
         return query_string;
         } ();
+        if (typeof QueryString.num == 'undefined' ) {
+            var d = new Date();
+            queryNum = d.getTime();
+        } else {
+            queryNum = QueryString.num;
+        }
 </script>
 </head>
 <body>
     <script>
-    document.write('<div id="div_Cube' + QueryString.num + '">');
+    document.write('<div id="div_Cube' + queryNum + '">');
     </script>
         <script>
             function windowWidth() {
@@ -39,10 +45,10 @@
             }
             var windowWidthNow = windowWidth();
             if ( windowWidthNow >= 300 && windowWidthNow <= 540 ) {
-                googletag.defineSlot('/8013/denverpost.com/News/Crime/Violent-crime',[300,250], 'div_Cube' + QueryString.num).setTargeting('POS','Cube1_RRail_ATF').addService(googletag.pubads());
+                googletag.defineSlot('/8013/denverpost.com/News/Crime/Violent-crime',[300,250], 'div_Cube' + queryNum).setTargeting('POS','Cube1_RRail_ATF').addService(googletag.pubads());
                 googletag.pubads().enableSyncRendering();
                 googletag.enableServices();                                         
-                googletag.display('div_Cube' + QueryString.num);
+                googletag.display('div_Cube' + queryNum);
             }
         </script>
     </div>
