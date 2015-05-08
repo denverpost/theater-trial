@@ -45,7 +45,7 @@
             }
             var windowWidthNow = windowWidth();
             if ( windowWidthNow >= 300 && windowWidthNow <= 540 ) {
-                googletag.defineSlot('/8013/denverpost.com/News/Crime/Violent-crime',[300,250], 'div_Cube' + queryNum).setTargeting('POS','Cube1_RRail_ATF').addService(googletag.pubads());
+                googletag.defineSlot('/8013/denverpost.com/News/Crime/Violent-crime',[300,250], 'div_Cube' + queryNum).addService(googletag.pubads());
                 googletag.pubads().enableSyncRendering();
                 googletag.enableServices();                                         
                 googletag.display('div_Cube' + queryNum);
