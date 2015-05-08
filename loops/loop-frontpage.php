@@ -51,7 +51,7 @@ $page_links = reactor_option('frontpage_page_links', 0); ?>
 							</div>
 
 							<?php // try to insert an ad
-							if ( $i % 5 == 0 ) { ?>
+							if ( $i % 10 == 0 ) { ?>
 								<div class="row">
 	                            	<div class="large-12 medium-12 small-12 text-center columns">
 	                            	<?php dp_infinite_ad_widget($post->ID); ?>
