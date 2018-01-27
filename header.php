@@ -50,8 +50,6 @@ if ( is_category() ) {
 } ?>
 
 <script type="text/javascript">
-    //configure Chartbeat variables
-    var _sf_startpt=(new Date()).getTime();
     //confiure Outbrainvariables
     var outbrainurl = '<?php echo get_permalink(); ?>';
 </script>
